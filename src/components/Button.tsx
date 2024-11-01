@@ -1,6 +1,7 @@
 import React from "react";
 
-interface Props {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   color: "blue" | "white" | "orange";
   size?: "small";
@@ -9,7 +10,7 @@ interface Props {
   href?: string;
 }
 
-const Button = (props: Props) => {
+const Button = (props: ButtonProps) => {
   let colorClasses = "";
   let sizeClasses = "";
 
@@ -39,11 +40,9 @@ const Button = (props: Props) => {
 
   if (props.href) {
     return (
-      <a href={props.href}>
-        <a className={className}>
-          {props.title}
-          {props.icon}
-        </a>
+      <a href={props.href} className={className}>
+        {props.title}
+        {props.icon}
       </a>
     );
   }
